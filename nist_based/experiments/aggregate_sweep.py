@@ -9,7 +9,7 @@ import numpy as np
 from experiments.common import PROJECT_ROOT, save_json
 
 METRICS = ["backdoor_success_rate", "prediction_shift", "clean_mae", "trigger_mae"]
-MODELS = ["mlp", "vqc", "linear"]
+MODELS = ["mlp", "vqc", "linear", "kernel_ridge"]
 ATTACK_ORDER = ["none", "trigger", "feature_collision", "bilevel", "clean_label_bilevel"]
 
 
