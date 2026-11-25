@@ -67,9 +67,15 @@ class LinearSurrogate:
         return (X @ params[0] + params[1]).reshape(-1)
 
 class KernelRidgeSurrogate:
-    """Kernel Ridge Regression surrogate: RBF kernel representation followed by linear weights."""
+    """Kernel Ridge Regression surrogate com subamostragem de X_ref para evitar explosão de memória no autograd."""
 
-    def __init__(self, X_ref: np.ndarray, gamma: float = 1.0) -> None:
+    def __init__(self, X_ref: np.ndarray, gamma: float = 1.0, max_ref_samples: int = 300, seed: int = 42) -> None:
+        # Se o dataset de treino for muito grande, fazemos uma amostragem para estabilizar o autograd do bilevel
+        if len(X_ref) > max_ref_samples:
+            rng = np.random.default_rng(seed)
+            idx = rng.choice(len(X_ref), size=max_ref_samples, replace=False)
+            X_ref = X_ref[idx]
+            
         self.X_ref = torch.tensor(X_ref, dtype=torch.float64)
         self.gamma = gamma
 
@@ -81,12 +87,10 @@ class KernelRidgeSurrogate:
         return [w.requires_grad_(), torch.zeros(1, dtype=torch.float64, requires_grad=True)]
 
     def _kernel(self, X: torch.Tensor) -> torch.Tensor:
-        # Calcula a distância euclidiana ao quadrado e aplica o kernel RBF (Gaussiano)
         dists = torch.cdist(X, self.X_ref, p=2) ** 2
         return torch.exp(-self.gamma * dists)
 
     def representation(self, params: Params, X: torch.Tensor) -> torch.Tensor:
-        # A representação corresponde ao espaço de kernel (K(X, X_ref))
         return self._kernel(X)
 
     def forward(self, params: Params, X: torch.Tensor) -> torch.Tensor:
