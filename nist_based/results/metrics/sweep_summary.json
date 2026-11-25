@@ -777,6 +777,73 @@
     }
   },
   "kernel_ridge": {
+    "1.0": {
+      "none": {
+        "n_seeds": 1,
+        "backdoor_success_rate_mean": 0.06894912030432715,
+        "prediction_shift_mean": 0.27916525237658896,
+        "clean_mae_mean": 0.008018198205983236,
+        "trigger_mae_mean": 0.28001779409510424,
+        "backdoor_success_rate_std": 0.0,
+        "prediction_shift_std": 0.0,
+        "clean_mae_std": 0.0,
+        "trigger_mae_std": 0.0,
+        "bsr_gain_mean": 0.0,
+        "bsr_gain_std": 0.0
+      },
+      "trigger": {
+        "n_seeds": 1,
+        "backdoor_success_rate_mean": 0.9662387066096053,
+        "prediction_shift_mean": 1.047664558205883,
+        "clean_mae_mean": 0.011615437485781177,
+        "trigger_mae_mean": 1.0496994844371872,
+        "backdoor_success_rate_std": 0.0,
+        "prediction_shift_std": 0.0,
+        "clean_mae_std": 0.0,
+        "trigger_mae_std": 0.0,
+        "bsr_gain_mean": 0.8972895863052781,
+        "bsr_gain_std": 0.0
+      },
+      "feature_collision": {
+        "n_seeds": 1,
+        "backdoor_success_rate_mean": 0.24488825487398955,
+        "prediction_shift_mean": 0.37149422099468904,
+        "clean_mae_mean": 0.01985167685189191,
+        "trigger_mae_mean": 0.3755221294237276,
+        "backdoor_success_rate_std": 0.0,
+        "prediction_shift_std": 0.0,
+        "clean_mae_std": 0.0,
+        "trigger_mae_std": 0.0,
+        "bsr_gain_mean": 0.1759391345696624,
+        "bsr_gain_std": 0.0
+      },
+      "bilevel": {
+        "n_seeds": 1,
+        "backdoor_success_rate_mean": 0.5454113171659534,
+        "prediction_shift_mean": 0.9102866722557449,
+        "clean_mae_mean": 0.024067420904033115,
+        "trigger_mae_mean": 0.9147412099282404,
+        "backdoor_success_rate_std": 0.0,
+        "prediction_shift_std": 0.0,
+        "clean_mae_std": 0.0,
+        "trigger_mae_std": 0.0,
+        "bsr_gain_mean": 0.4764621968616262,
+        "bsr_gain_std": 0.0
+      },
+      "clean_label_bilevel": {
+        "n_seeds": 1,
+        "backdoor_success_rate_mean": 0.25344745601521634,
+        "prediction_shift_mean": 0.7365806327963653,
+        "clean_mae_mean": 0.021974105930765857,
+        "trigger_mae_mean": 0.7398864603863825,
+        "backdoor_success_rate_std": 0.0,
+        "prediction_shift_std": 0.0,
+        "clean_mae_std": 0.0,
+        "trigger_mae_std": 0.0,
+        "bsr_gain_mean": 0.1844983357108892,
+        "bsr_gain_std": 0.0
+      }
+    },
     "2.0": {
       "none": {
         "n_seeds": 1,
