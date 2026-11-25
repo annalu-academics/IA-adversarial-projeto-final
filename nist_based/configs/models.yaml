@@ -12,7 +12,7 @@ models:
   kernel_ridge:
     kernel: "rbf"
     alpha: 1.0
-    gamma: null
+    gamma: 1.0
   
   vqc:
     num_qubits: 4
