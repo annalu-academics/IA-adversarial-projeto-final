@@ -9,6 +9,12 @@ models:
 
   linear: {}  # OLS (sklearn LinearRegression); sem hiperparametros
 
+  svm:
+    kernel: "rbf"
+    C: 1.0
+    epsilon: 0.1
+    gamma: "scale"
+  
   vqc:
     num_qubits: 4
     ansatz_reps: 2
