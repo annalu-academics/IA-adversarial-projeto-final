@@ -5,7 +5,7 @@ from typing import Any
 import numpy as np
 import torch
 
-from models.torch_surrogates import LinearSurrogate, MLPSurrogate, Params, Surrogate, VQCSurrogate
+from models.torch_surrogates import LinearSurrogate, MLPSurrogate, KernelRidgeSurrogate, Params, Surrogate, VQCSurrogate
 
 
 def build_surrogate(model_name: str, models_cfg: dict[str, Any], X_ref: np.ndarray, seed: int) -> Surrogate:
