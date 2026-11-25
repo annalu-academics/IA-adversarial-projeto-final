@@ -775,5 +775,74 @@
         "bsr_gain_std": 0.0034942792336421927
       }
     }
+  },
+  "kernel_ridge": {
+    "2.0": {
+      "none": {
+        "n_seeds": 1,
+        "backdoor_success_rate_mean": 0.0,
+        "prediction_shift_mean": 0.666498239786837,
+        "clean_mae_mean": 0.12871480623900086,
+        "trigger_mae_mean": 0.7903706495247832,
+        "backdoor_success_rate_std": 0.0,
+        "prediction_shift_std": 0.0,
+        "clean_mae_std": 0.0,
+        "trigger_mae_std": 0.0,
+        "bsr_gain_mean": 0.0,
+        "bsr_gain_std": 0.0
+      },
+      "trigger": {
+        "n_seeds": 1,
+        "backdoor_success_rate_mean": 0.08892058963385639,
+        "prediction_shift_mean": 0.7499001169954117,
+        "clean_mae_mean": 0.14013731928395937,
+        "trigger_mae_mean": 0.8786691381616101,
+        "backdoor_success_rate_std": 0.0,
+        "prediction_shift_std": 0.0,
+        "clean_mae_std": 0.0,
+        "trigger_mae_std": 0.0,
+        "bsr_gain_mean": 0.08892058963385639,
+        "bsr_gain_std": 0.0
+      },
+      "feature_collision": {
+        "n_seeds": 1,
+        "backdoor_success_rate_mean": 0.0,
+        "prediction_shift_mean": 0.6699483637728457,
+        "clean_mae_mean": 0.1300655569437544,
+        "trigger_mae_mean": 0.7903650900736964,
+        "backdoor_success_rate_std": 0.0,
+        "prediction_shift_std": 0.0,
+        "clean_mae_std": 0.0,
+        "trigger_mae_std": 0.0,
+        "bsr_gain_mean": 0.0,
+        "bsr_gain_std": 0.0
+      },
+      "bilevel": {
+        "n_seeds": 1,
+        "backdoor_success_rate_mean": 0.0,
+        "prediction_shift_mean": 0.6583002612890562,
+        "clean_mae_mean": 0.14066719331165756,
+        "trigger_mae_mean": 0.7928831948922749,
+        "backdoor_success_rate_std": 0.0,
+        "prediction_shift_std": 0.0,
+        "clean_mae_std": 0.0,
+        "trigger_mae_std": 0.0,
+        "bsr_gain_mean": 0.0,
+        "bsr_gain_std": 0.0
+      },
+      "clean_label_bilevel": {
+        "n_seeds": 1,
+        "backdoor_success_rate_mean": 0.0,
+        "prediction_shift_mean": 0.6345253177693261,
+        "clean_mae_mean": 0.16019992412197911,
+        "trigger_mae_mean": 0.7903840584488555,
+        "backdoor_success_rate_std": 0.0,
+        "prediction_shift_std": 0.0,
+        "clean_mae_std": 0.0,
+        "trigger_mae_std": 0.0,
+        "bsr_gain_mean": 0.0,
+        "bsr_gain_std": 0.0
+      }
+    }
   }
 }
