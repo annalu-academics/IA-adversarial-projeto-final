@@ -22,6 +22,10 @@ def build_model(model_name: str, models_cfg: dict[str, Any], seed: int):
     if model_name == "linear":
         return LinearRegressionModel()
 
+    if model_name == "svm":
+        cfg = models_cfg["svm"]
+        return SVMRegressorModel(**cfg)
+
     if model_name == "vqc":
         cfg = models_cfg["vqc"]
         return QuantumVQCRegressor(
