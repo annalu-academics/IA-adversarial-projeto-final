@@ -66,6 +66,32 @@ class LinearSurrogate:
     def forward(self, params: Params, X: torch.Tensor) -> torch.Tensor:
         return (X @ params[0] + params[1]).reshape(-1)
 
+class KernelRidgeSurrogate:
+    """Kernel Ridge Regression surrogate: RBF kernel representation followed by linear weights."""
+
+    def __init__(self, X_ref: np.ndarray, gamma: float = 1.0) -> None:
+        self.X_ref = torch.tensor(X_ref, dtype=torch.float64)
+        self.gamma = gamma
+
+    def init_params(self, seed: int) -> Params:
+        gen = torch.Generator().manual_seed(seed)
+        n_ref = len(self.X_ref)
+        bound = math.sqrt(6.0 / (n_ref + 1))
+        w = (torch.rand(n_ref, 1, generator=gen, dtype=torch.float64) * 2 - 1) * bound
+        return [w.requires_grad_(), torch.zeros(1, dtype=torch.float64, requires_grad=True)]
+
+    def _kernel(self, X: torch.Tensor) -> torch.Tensor:
+        # Calcula a distância euclidiana ao quadrado e aplica o kernel RBF (Gaussiano)
+        dists = torch.cdist(X, self.X_ref, p=2) ** 2
+        return torch.exp(-self.gamma * dists)
+
+    def representation(self, params: Params, X: torch.Tensor) -> torch.Tensor:
+        # A representação corresponde ao espaço de kernel (K(X, X_ref))
+        return self._kernel(X)
+
+    def forward(self, params: Params, X: torch.Tensor) -> torch.Tensor:
+        K = self._kernel(X)
+        return (K @ params[0] + params[1]).reshape(-1)
 
 class VQCSurrogate:
     """Quantum surrogate: fixed linear PCA projection followed by the differentiable VQC simulator."""
