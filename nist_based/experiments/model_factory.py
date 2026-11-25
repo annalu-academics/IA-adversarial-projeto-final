@@ -5,6 +5,7 @@ from typing import Any
 from models.classical_mlp import ClassicalMLPRegressor
 from models.linear_regression import LinearRegressionModel
 from models.quantum_vqc import QuantumVQCRegressor
+from models.kernel_ridge_regressor import KernelRidgeRegressorModel
 
 
 def build_model(model_name: str, models_cfg: dict[str, Any], seed: int):
@@ -22,9 +23,9 @@ def build_model(model_name: str, models_cfg: dict[str, Any], seed: int):
     if model_name == "linear":
         return LinearRegressionModel()
 
-    if model_name == "svm":
-        cfg = models_cfg["svm"]
-        return SVMRegressorModel(**cfg)
+    if model_name == "kernel_ridge":
+        cfg = models_cfg["kernel_ridge"]
+        return KernelRidgeRegressorModel(**cfg)
 
     if model_name == "vqc":
         cfg = models_cfg["vqc"]
