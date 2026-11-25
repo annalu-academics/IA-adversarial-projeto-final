@@ -18,6 +18,12 @@ def build_surrogate(model_name: str, models_cfg: dict[str, Any], X_ref: np.ndarr
         )
     if model_name == "linear":
         return LinearSurrogate(in_dim=X_ref.shape[1])
+    if model_name == "kernel_ridge":
+        cfg = models_cfg.get("kernel_ridge", {})
+        return KernelRidgeSurrogate(
+            X_ref=X_ref,
+            gamma=float(cfg.get("gamma", 1.0)),
+        )
     if model_name == "vqc":
         cfg = models_cfg["vqc"]
         return VQCSurrogate(
